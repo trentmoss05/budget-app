@@ -8,23 +8,16 @@ class UsersController < ApplicationController
     end
   end
 
-  def login
-    @user = User.new
-  end
-
   def create
     @user = User.create(user_params)
     if @user.save
       session[:user_id] = @user.id
-      return redirect_to controller: 'users', action: 'home'
+      return redirect_to root_path
     else
       render :new
     end
   end
 
-  def home
-    @user = User.find(session[:user_id])
-  end
 
   private
 
