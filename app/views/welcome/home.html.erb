@@ -2,3 +2,20 @@
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='logout'>
 <% end %>
+<br><br>
+<% if @events = nil %>
+    <h3>You have no events, click<% link_to "here", new_event_url %></h3>
+<% else %>
+    <table>
+      <tr>
+        <td>Event Name</td>
+        <td>Event Budget</td>
+      </tr>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= link_to event.name, event_path(event)%></td>
+        <td><%= event.budget %></td>
+        <td><%= link_to "Delete", event_path(event), :method => :delete %></td>
+        <td></td>
+      </tr>
+    </table>
