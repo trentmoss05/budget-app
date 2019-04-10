@@ -33,7 +33,7 @@ class ExpensesController < ApplicationController
     if params[:user_id] = session[:user_id]
       @event = @expense.event_id
       @expense.destroy
-      redirect_to events_path(@event)
+      redirect_to event_path(@event)
     else
       redirect_to root_path
     end

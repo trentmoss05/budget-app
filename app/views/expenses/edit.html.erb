@@ -1,0 +1,11 @@
+<h2>Edit Expense</h2>
+
+<%= form_for @expense, url: event_expense_path(params[:event_id], params[:id]), method: :patch do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :cost %>
+  <%= f.number_field :cost, step: :any %>
+  <%= f.label :quantity %>
+  <%= f.number_field :quantity %>
+  <%= f.submit "Update Expense" %>
+<% end %>

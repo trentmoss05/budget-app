@@ -28,6 +28,8 @@
     <td><%= number_to_currency(expense.cost) %></td>
     <td><%= expense.quantity %></td>
     <td><%= number_to_currency(expense.total) %></td>
+    <td><%= link_to "Edit", edit_event_expense_path(expense.event_id, expense.id) %></td>
+    <td><%= link_to "Delete", event_expense_path(expense.event_id, expense.id), method: :delete %></td>
   </tr>
 <% end %>
 </table>
@@ -46,4 +48,4 @@
   <% end %>
   <br>
 
-<h3>Budget Remaining: $<%= @difference %></h3>
+<h3>Budget Remaining: <%= number_to_currency(@difference) %></h3>
