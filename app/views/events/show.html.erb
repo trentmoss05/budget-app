@@ -1,0 +1,15 @@
+<h2>Event Info</h2>
+<br>
+
+<table align="center">
+  <tr>
+    <th>Event Name</th>
+    <th>Budget</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><h4><%= @event.name %></h4></td>
+    <td><h4><%= number_to_currency(@event.budget)%></h4></td>
+    <td><%=link_to "Edit Event", edit_event_path(@event)%></td>
+  </tr>
+</table>

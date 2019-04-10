@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :set_event, only: [:show, :edit, :destroy, :update]
+  before_action :set_user, only: [:show, :edit, :destroy, :update, :index]
 
   def new
     @event = Event.new
@@ -8,7 +10,7 @@ class EventsController < ApplicationController
     @event = Event.create(event_params)
     @event.user_id = session[:user_id]
     if @event.save
-      redirect_to user_event_url(@event.user_id, @event)
+      redirect_to event_path(@event)
     else
       render :new
     end
@@ -21,11 +23,13 @@ class EventsController < ApplicationController
       @expenses = @event.expenses.all
     else
       redirect_to root_path
+    end
   end
 
   def index
     current_user = User.find(@user)
     @events = current_user.events
+    redirect_to root_path
   end
 
   def edit
@@ -33,7 +37,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to user_event_url(@event)
+      redirect_to event_path(@event)
     else
       render :edit
     end
@@ -45,6 +49,14 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = session[:user_id]
+  end
+
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
   def event_params
     params.require(:event).permit(:name, :budget, :users_id)
