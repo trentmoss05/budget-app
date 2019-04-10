@@ -13,3 +13,37 @@
     <td><%=link_to "Edit Event", edit_event_path(@event)%></td>
   </tr>
 </table>
+
+<h2>Expenses</h2>
+<table align="center">
+  <tr>
+    <th>Name</th>
+    <th>Cost</th>
+    <th>Quantity</th>
+    <th>Total</th>
+  </tr>
+<% @expenses.each do |expense| %>
+  <tr>
+    <td><%= expense.name %></td>
+    <td><%= number_to_currency(expense.cost) %></td>
+    <td><%= expense.quantity %></td>
+    <td><%= number_to_currency(expense.total) %></td>
+  </tr>
+<% end %>
+</table>
+
+<h4>Add an Expense</h4>
+
+<%= form_for @expense, url: url_for(controller: 'expenses', action: 'create') do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :cost %>
+  <%= f.number_field :cost, step: :any %>
+  <%= f.label :quantity %>
+  <%= f.number_field :quantity, value: 1 %>
+  <%= f.hidden_field :event_id, value: params[:id] %>
+  <%= f.submit "Add Expense", data: {disable_with: false} %>
+  <% end %>
+  <br>
+
+<h3>Budget Remaining: $<%= @difference %></h3>

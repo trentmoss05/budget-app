@@ -21,6 +21,7 @@ class EventsController < ApplicationController
       @user = User.find(@event.user_id)
       @expense = Expense.new
       @expenses = @event.expenses.all
+      @difference = @event.budget_difference
     else
       redirect_to root_path
     end

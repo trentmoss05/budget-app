@@ -1,4 +1,8 @@
 class ExpensesController < ApplicationController
+
+  before_action :set_expense, only: [:edit, :update, :destroy]
+  before_action :set_user, only: [:edit, :update, :destroy, :create]
+
   def edit
   end
 
@@ -19,6 +23,7 @@ class ExpensesController < ApplicationController
       @event = Event.find(params[:expense][:event_id])
       @expense = @event.expenses.build(expense_params)
       @expense.save
+      redirect_to event_path(@event)
     else
       redirect_to root_path
     end
@@ -35,6 +40,14 @@ class ExpensesController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = session[:user_id]
+  end
+
+  def set_expense
+    @expense = Expense.find(params[:id])
+  end
 
   def expense_params
     params.require(:expense).permit(:name, :cost, :quantity, :event_id)
