@@ -1,11 +1,12 @@
 <h1>Edit Event</h1>
+<div class="col-md-4 mb-3">
+  <%= form_for @event, url: event_path, method: :PATCH do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
 
-<%= form_for @event, url: event_path, method: :PATCH do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+    <%= f.label :budget %>
+    <%= f.number_field :budget, step: :any, class: "form-control" %><br>
 
-  <%= f.label :budget %>
-  <%= f.number_field :budget, step: :any %>
-
-  <%= f.submit "Update Event" %>
-<% end %>
+    <%= f.submit "Update Event", class: "btn btn-primary" %>
+  <% end %>
+</div>

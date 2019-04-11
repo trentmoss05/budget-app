@@ -32,17 +32,18 @@
 </table>
 
 <h4>Add an Expense</h4><br>
-
-<%= form_for @expense, url: url_for(controller: 'expenses', action: 'create') do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
-  <%= f.label :cost %>
-  <%= f.number_field :cost, step: :any %><br>
-  <%= f.label :quantity %>
-  <%= f.number_field :quantity, value: 1 %><br><br>
-  <%= f.hidden_field :event_id, value: params[:id] %>
-  <%= f.submit "Add Expense", data: {disable_with: false} %>
+<div class="col-md-4 mb-3">
+  <%= form_for @expense, url: url_for(controller: 'expenses', action: 'create') do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class:"form-control" %><br>
+    <%= f.label :cost %>
+    <%= f.number_field :cost, step: :any, class: "form-control" %><br>
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, value: 1, class: "form-control" %><br>
+    <%= f.hidden_field :event_id, value: params[:id] %>
+    <%= f.submit "Add Expense", data: {disable_with: false}, class: "btn btn-primary" %>
   <% end %>
+</div>
   <br>
 
 <h4>Budget Remaining: <%= number_to_currency(@difference) %></h4>
@@ -56,10 +57,11 @@
 </ol>
 
 <h4>Add a Guest</h4>
-
-<%= form_for @guest, url: url_for(controller: 'guests', action: 'create') do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.hidden_field :event_id, value: params[:id] %>
-  <%= f.submit "Add Guest to List" %>
-<% end %>
+<div class="col-md-4 mb-3">
+  <%= form_for @guest, url: url_for(controller: 'guests', action: 'create') do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %><br>
+    <%= f.hidden_field :event_id, value: params[:id] %>
+    <%= f.submit "Add Guest to List", class: "btn btn-primary" %>
+  <% end %>
+</div>

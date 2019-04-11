@@ -1,13 +1,14 @@
 <h2>Edit Expense</h2>
-
-<%= form_for @expense, url: event_expense_path(params[:event_id], params[:id]), method: :patch do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br><br>
-  <%= f.label :cost %>
-  <%= f.number_field :cost, step: :any %><br><br>
-  <%= f.label :quantity %>
-  <%= f.number_field :quantity %><br><br>
-  <%= f.label :purchased? %>
-  <%= f.check_box :purchased %><br><br>
-  <%= f.submit "Update Expense" %>
-<% end %>
+<div class="col-md-4 mb-3">
+  <%= form_for @expense, url: event_expense_path(params[:event_id], params[:id]), method: :patch do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %><br>
+    <%= f.label :cost %>
+    <%= f.number_field :cost, step: :any, class: "form-control" %><br>
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, class: "form-control" %><br>
+    <%= f.label :purchased? %>
+    <%= f.check_box :purchased %><br>
+    <%= f.submit "Update Expense", class: "btn btn-primary" %>
+  <% end %>
+</div>
