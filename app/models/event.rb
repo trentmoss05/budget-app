@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :user
   has_many :expenses
+  has_many :guests
 
   validates :name, presence: true
 
