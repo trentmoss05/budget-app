@@ -2,10 +2,12 @@
 
 <%= form_for @expense, url: event_expense_path(params[:event_id], params[:id]), method: :patch do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name %><br><br>
   <%= f.label :cost %>
-  <%= f.number_field :cost, step: :any %>
+  <%= f.number_field :cost, step: :any %><br><br>
   <%= f.label :quantity %>
-  <%= f.number_field :quantity %>
+  <%= f.number_field :quantity %><br><br>
+  <%= f.label :purchased? %>
+  <%= f.check_box :purchased %><br><br>
   <%= f.submit "Update Expense" %>
 <% end %>

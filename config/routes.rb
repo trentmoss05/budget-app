@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
   post "expenses/create", to: "expenses#create"
+
   resources :events do
     resources :expenses, only: [:new, :edit, :destroy, :create, :update]
   end
