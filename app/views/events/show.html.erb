@@ -49,3 +49,19 @@
   <br>
 
 <h3>Budget Remaining: <%= number_to_currency(@difference) %></h3>
+
+<h2>Guest List</h2>
+<ol>
+  <% @guests.each do |guest| %>
+    <li><%= guest.name %> <%= link_to "Remove", event_guest_path(guest.event_id, guest.id), method: :delete %></li>
+  <% end %>
+</ol>
+
+<h4>Add a Guest</h4>
+
+<%= form_for @guest, url: url_for(controller: 'guests', action: 'create') do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.hidden_field :event_id, value: params[:id] %>
+  <%= f.submit "Add Guest to List" %>
+<% end %>
