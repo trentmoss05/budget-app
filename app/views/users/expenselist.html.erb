@@ -1,19 +1,24 @@
 <h2>List of Expenses to Buy</h2>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Quantity</th>
-    <th>Cost</th>
-  </tr>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Cost</th>
+    </tr>
+  </thead>
   <% @expenses.each do |expense| %>
     <% if expense.purchased == true %>
       <tr>
+        <td></td>
         <td><strike><%= link_to expense.name, edit_event_expense_path(expense.event_id, expense.id) %></strike></td>
         <td><strike><%= expense.quantity %></strike></td>
         <td><strike><%= number_to_currency(expense.cost) %></strike></td>
       </tr>
     <% else %>
       <tr>
+        <td></td>
         <td><%= link_to expense.name, edit_event_expense_path(expense.event_id, expense.id) %></td>
         <td><%= expense.quantity %></td>
         <td><%= number_to_currency(expense.cost) %></td>

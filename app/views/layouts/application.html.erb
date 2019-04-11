@@ -26,12 +26,13 @@
   <% if session[:user_id] %>
     <header>
       <%= link_to "Home", root_path %>
+      <%= link_to "Shopping List", expenselist_path %>
       <%= link_to "Logout", logout_path, method: :destroy %>
     </header>
   <% end %>
 
   <body>
-    <div class="container-fluid">
+    <div class="container">
       <%= yield %>
     </div>
   </body>
