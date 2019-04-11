@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   has_many :guests
 
   validates :name, presence: true
+  validates :budget, presence: true
 
 
   def budget_difference

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   post 'expenses/create', to: "expenses#create"
   post 'guests/create', to: 'guests#create'
+  get '/auth/:provider/callback', to: 'sessions#create'
 
   resources :events do
     resources :expenses, only: [:new, :edit, :destroy, :create, :update]

@@ -1,5 +1,9 @@
 <h1>Existing User Login</h1>
 
+<% flash.each do |key, value| %>
+        <div><%= value %></div>
+<% end %>
+<br>
 <%= form_for @user, url: login_path, method: :post do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username %><br><br>
@@ -8,5 +12,9 @@
   <%= f.password_field :password %><br><br>
 
   <%= f.submit "Log In" %><br><br>
-  Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %> if you dont have an account
+
 <% end %>
+
+<%= link_to "Login via Github", "/auth/github" %><br><br>
+
+Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %> if you dont have an account
