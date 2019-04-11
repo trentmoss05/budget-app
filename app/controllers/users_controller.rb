@@ -12,11 +12,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
+    @errors = @user.errors.full_messages
     if @user.save
       session[:user_id] = @user.id
       return redirect_to root_path
     else
-      render :new
+      render :new, flash: {alert: @user.errors.full_messages}
     end
   end
 
