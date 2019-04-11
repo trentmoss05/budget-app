@@ -9,18 +9,21 @@
     <h3>Your Events</h3>
     <%= link_to "New Event", new_event_url %>
     <br><br>
-    <table>
+    <table class="table">
       <tr>
-        <td>Event Name</td>
-        <td>Event Budget</td>
+        <th>#</th>
+        <th>Event Name</th>
+        <th>Event Budget</th>
+        <td></td>
       </tr>
     <% @events.each do |event| %>
       <tr>
+        <td></td>
         <td><%= link_to event.name, event_path(event)%></td>
         <td><%= number_to_currency(event.budget) %></td>
         <td><%= link_to "Delete", event_path(event), :method => :delete %></td>
-        <td></td>
       </tr>
+
       <% end %>
     <% end %>
     </table>

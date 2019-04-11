@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
         redirect_to root_path
       else
         flash[:incorrect] = "Incorrect Password" if params[:user][:password] != ""
-        redirect_to login_path
+        redirect_to root_path
       end
     end
   end

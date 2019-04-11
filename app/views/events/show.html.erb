@@ -1,22 +1,14 @@
 <h2>Event Info</h2>
+
+<p>Name - <%= @event.name %></p>
+<p>Budget - <%= number_to_currency(@event.budget) %></p>
+<p><%=link_to "Edit", edit_event_path(@event)%></p>
 <br>
 
-<table align="center">
+<h2>Expenses</h2><br>
+<table align="center" class="table">
   <tr>
-    <th>Event Name</th>
-    <th>Budget</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td><h4><%= @event.name %></h4></td>
-    <td><h4><%= number_to_currency(@event.budget)%></h4></td>
-    <td><%=link_to "Edit Event", edit_event_path(@event)%></td>
-  </tr>
-</table>
-
-<h2>Expenses</h2>
-<table align="center">
-  <tr>
+    <th>#</th>
     <th>Name</th>
     <th>Cost</th>
     <th>Quantity</th>
@@ -24,6 +16,7 @@
   </tr>
 <% @expenses.each do |expense| %>
   <tr>
+    <td></td>
     <td><%= expense.name %></td>
     <td><%= number_to_currency(expense.cost) %></td>
     <td><%= expense.quantity %></td>

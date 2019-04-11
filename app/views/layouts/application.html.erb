@@ -8,6 +8,19 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style media="screen">
+      tr:nth-child(2) {
+        counter-reset: rowNumber;
+      }
+      table tr {
+        counter-increment: rowNumber;
+      }
+      table tr td:first-child::before {
+        content: counter(rowNumber);
+        min-width: 1em;
+        margin-right: 0.5em;
+      }
+    </style>
   </head>
 
   <% if session[:user_id] %>
@@ -18,7 +31,7 @@
   <% end %>
 
   <body>
-    <div class="body_main">
+    <div class="container-fluid">
       <%= yield %>
     </div>
   </body>

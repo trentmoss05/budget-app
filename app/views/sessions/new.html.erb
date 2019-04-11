@@ -1,9 +1,9 @@
 <h1>Existing User Login</h1>
 
 <% flash.each do |key, value| %>
-        <div><%= value %></div>
+  <div class="alert alert-danger"><%= value %></div>
 <% end %>
-<br>
+
 <%= form_for @user, url: login_path, method: :post do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username %><br><br>
