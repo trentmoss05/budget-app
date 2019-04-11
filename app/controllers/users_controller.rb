@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :require_logged_in, only: [:home]
+
   def new
     if logged_in?
       redirect_to users_home_url
@@ -18,6 +20,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def home
+    @user = User.find(session[:user_id])
+    @events = @user.events.all
+  end
+
+  def expenselist
+    @user = User.find(session[:user_id])
+    @expenses = @user.expenses
+  end
 
   private
 

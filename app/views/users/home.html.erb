@@ -6,6 +6,9 @@
 <% if @events == [] %>
     <h3>You have no events, click <%= link_to "here", new_event_url %> to add one</h3>
 <% else %>
+    <h3>Your Events</h3>
+    <%= link_to "New Event", new_event_url %>
+    <br><br>
     <table>
       <tr>
         <td>Event Name</td>
@@ -14,7 +17,7 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= link_to event.name, event_path(event)%></td>
-        <td><%= event.budget %></td>
+        <td><%= number_to_currency(event.budget) %></td>
         <td><%= link_to "Delete", event_path(event), :method => :delete %></td>
         <td></td>
       </tr>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users, only: [:new, :create]
-  root 'welcome#home'
+  root 'users#home'
+  get '/expenselist' => 'users#expenselist'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'

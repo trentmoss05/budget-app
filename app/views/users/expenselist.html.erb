@@ -1,0 +1,15 @@
+<h2>List of Expenses to Buy</h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Quantity</th>
+    <th>Cost</th>
+  </tr>
+  <% @expenses.each do |expense| %>
+    <tr>
+      <td><%= expense.name %></td>
+      <td><%= expense.quantity %></td>
+      <td><%= number_to_currency(expense.cost) %></td>
+    </tr>
+  <% end %>
+</table>
