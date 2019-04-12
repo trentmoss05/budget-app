@@ -14,4 +14,4 @@
 
 ## Step 4
 
-  Here you can create new events, such as parties, vacations, etc, and add expenses to events, along with guests you wish you invite to the events. You can click shopping list at the top to see all of the expenses for all of the events.
+  Here you can create new events, such as parties, vacations, etc, and add expenses to events, along with guests you wish to invite to the events. You can click shopping list at the top to see all of the expenses for all of the events.
