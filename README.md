@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Step 1
 
-Things you may want to cover:
+  Clone program to your system, run rake db:migrate to run migrations for database.
 
-* Ruby version
+## Step 2
 
-* System dependencies
+   Run 'rails s' to start up the server and browse to localhost:3000.
 
-* Configuration
+## Step 3
 
-* Database creation
+  You will be directed to login page, click 'sign up' to create new account username and password, or log in with github account, will direct you to the home page after logging in.
 
-* Database initialization
+## Step 4
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  Here you can create new events, such as parties, vacations, etc, and add expenses to events, along with guests you wish you invite to the events. You can click shopping list at the top to see all of the expenses for all of the events.
