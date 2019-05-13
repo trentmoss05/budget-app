@@ -24,6 +24,10 @@ class EventsController < ApplicationController
       @guest = Guest.new
       @guests = @event.guests.all
       @difference = @event.budget_difference
+      respond_to do |format|
+          format.json {render json: @event, status: 200}
+        format.html {render :show}
+      end
     else
       redirect_to root_path
     end
@@ -32,7 +36,9 @@ class EventsController < ApplicationController
   def index
     current_user = User.find(@user)
     @events = current_user.events
-    redirect_to root_path
+    respond_to do |format|
+      format.json{render json: @events, status: 200}
+    end
   end
 
   def edit

@@ -21,6 +21,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(session[:user_id])
+    render json: @user
+  end
+
   def home
     @user = User.find(session[:user_id])
     @events = @user.events.all

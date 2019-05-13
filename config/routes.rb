@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
   root 'users#home'
   get '/expenselist' => 'users#expenselist'
   get '/login' => 'sessions#new'
