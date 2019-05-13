@@ -22,10 +22,21 @@
         <td><%= link_to event.name, event_path(event)%></td>
         <td><%= number_to_currency(event.budget) %></td>
         <td><%= link_to "Delete", event_path(event), :method => :delete %></td>
-        <td><a class="eventBrief" href="/events/<%=event.id%>.json">Event Brief</a>
+        <td><a class="eventBrief" href="/events/<%=event.id%>.json">Brief Info</a>
       </tr>
-      
-
       <% end %>
     <% end %>
-    </table>
+  </table>
+  <table>
+    <% @events.each do |event| %>
+    <tr>
+      <td>
+          <div id="briefedEvent<%=event.id%>" >
+
+          </div>
+          <div id="briefedGuest<%=event.id%>" >
+
+          </div>
+        </td>
+    </tr>
+  <% end %>
