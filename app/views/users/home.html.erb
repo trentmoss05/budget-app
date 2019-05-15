@@ -27,6 +27,7 @@
       <% end %>
     <% end %>
   </table>
+  <div id="briefTable">
   <table>
     <% @events.each do |event| %>
     <tr>
@@ -39,6 +40,11 @@
           </div>
         </td>
     </tr>
+    </div>
   <% end %>
 
-<h3> <%= link_to "Shopping List", user_path(@user), id: "shopping_list" %> </h3>
+<div id="showShoppingList">
+  <h3> Shopping List </h3>
+  <a href="/expenselist.json" id="shoppingList" type="submit">Show List</a>
+  <table></table>
+</div>

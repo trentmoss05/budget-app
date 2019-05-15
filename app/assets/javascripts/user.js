@@ -35,5 +35,49 @@ $( document ).on('turbolinks:load', function() {
      })
    })
 
-   // $("#shopping_list").on('click', function(e))
+   $("#shoppingList").on("click", function(e) {
+     e.preventDefault();
+     url = this.href
+     if ($("#showShoppingList table").text().length > 0){
+       $("#showShoppingList table").empty()
+       $("#shoppingList").text("Show List")
+     } else {
+       $.ajax({
+         method: "GET",
+         url: url,
+         dataType: "json",
+         success: function (response) {
+           let allExpenses = response.map(expense => new Expense(expense))
+           let formattedExpenses = allExpenses.map(expense => expense.formatExpenses()).join('')
+           $("#shoppingList").text("Hide List")
+           $("#showShoppingList table").empty()
+           $("#showShoppingList").append("<table><tr><th>Name</th><th>Quantity</th><th>Cost</th><th></th></tr>" + formattedExpenses + "</table>")
+         }
+       })
+     }
+   })
+
+   function toCurrency(amount){
+     return(
+       '$' + parseInt(amount).toFixed(2)
+     )
+   }
+
+   class Expense{
+     constructor(obj){
+       this.name = obj.name,
+       this.quantity = obj.quantity
+       this.id = obj.id
+       this.cost = obj.cost
+       this.event_id = obj.event.id
+     }
+     formatExpenses(){
+       return(`
+         <tr>
+          <td>${this.name}</td>
+          <td>${this.quantity}</td>
+          <td>${toCurrency((this.quantity * this.cost))}</td>
+        </tr>`)
+     }
+   }
   });

@@ -34,6 +34,9 @@ class UsersController < ApplicationController
   def expenselist
     @user = User.find(session[:user_id])
     @expenses = @user.expenses
+
+    render json: @expenses, status: 200
+
   end
 
   private

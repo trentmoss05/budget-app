@@ -21,6 +21,12 @@ $(document).on('turbolinks:load', function() {
     }
   })
 
+  function toCurrency(amount){
+    return(
+      '$' + parseInt(amount).toFixed(2)
+    )
+  }
+
   class Event{
     constructor(obj) {
       this.name = obj.name,
@@ -32,8 +38,8 @@ $(document).on('turbolinks:load', function() {
       return(`
         <tr>
           <td>${this.name}</td>
-          <td>$${this.budget}</td>
-          <td><a href="/events/${this.id}\">More Info</a></td>
+          <td>${toCurrency(this.budget)}</td>
+          <td><a href="/events/${this.id}\">Event Page</a></td>
         </tr>`)
     }
   }
