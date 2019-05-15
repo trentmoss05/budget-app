@@ -34,4 +34,6 @@ $( document ).on('turbolinks:load', function() {
        }
      })
    })
+
+   // $("#shopping_list").on('click', function(e))
   });

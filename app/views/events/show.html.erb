@@ -5,8 +5,14 @@
   <p>Name - <%= @event.name %></p>
   <p>Budget - <%= number_to_currency(@event.budget) %></p>
   <p><%=link_to "Edit", edit_event_path(@event)%></p>
+  <p>See all events created by <%= @event.user.username %></p>
+  <div id="eventShow">
+    <a href="/events.json" id="userEvents" type="submit"> Show </a>
+    <table></table>
+  </div>
   <br>
 </div>
+
 
 <h2>Expenses</h2><br>
   <table align="center" class="table table-striped">
