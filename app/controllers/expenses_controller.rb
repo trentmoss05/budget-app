@@ -23,7 +23,7 @@ class ExpensesController < ApplicationController
       @event = Event.find(params[:expense][:event_id])
       @expense = @event.expenses.build(expense_params)
       @expense.save
-      redirect_to event_path(@event)
+      render json: @expense
     else
       redirect_to root_path
     end
