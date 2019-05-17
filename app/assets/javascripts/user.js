@@ -8,10 +8,10 @@ $( document ).on('turbolinks:load', function() {
        dataType: "json",
        success: function (response) {
          let expenses = response["expenses"].map(expense =>
-           "<tr> <td>"
+           "<tr> <td> </td> <td>"
            + expense["name"] +
            "</td> <td>"
-           + expense["cost"] +
+           + toCurrency(expense["cost"]) +
            "</td><td>"
            + expense["quantity"] +
            "</td>  <tr>"
@@ -27,10 +27,8 @@ $( document ).on('turbolinks:load', function() {
 
           $guest.append(guests)
           $guest.attr('class','data_block')
-          $event.append( "<table><tr><th>Name</th><th>Cost</th><th>Quantity</th></tr>"+ expenses.join('') +"</table>")
+          $event.append( "<table><tr><th>#</th><th>Name</th><th>Cost</th><th>Quantity</th></tr>" +  expenses.join('') + "</table>")
           $event.attr('class','data_block')
-
-
        }
      })
    })
