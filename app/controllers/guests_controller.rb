@@ -7,7 +7,7 @@ class GuestsController < ApplicationController
       @event = Event.find(params[:guest][:event_id])
       @guest = @event.guests.build(guest_params)
       @guest.save
-      redirect_to event_path(@event)
+      render json: @guest
     else
       redirect_to root_path
     end

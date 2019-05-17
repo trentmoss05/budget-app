@@ -89,4 +89,34 @@ $(document).on('turbolinks:load', function() {
         </tr>`)
     }
   }
+
+  $("#new_guest").on('submit', function(e){
+    url = this.action
+    data = $(this).serialize()
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: data,
+      success: function(resp) {
+        let guest = new Guest(resp)
+        $("#guest_name").val('')
+        $("#guest_list").append(guest.formatGuests())
+      }
+    })
+    e.preventDefault();
+  })
+
+  class Guest {
+    constructor(obj) {
+      this.name = obj.name,
+      this.id = obj.id,
+      this.event_id = obj.event.id
+    }
+
+    formatGuests() {
+      return(`
+        <li>${this.name} <a data-method="delete" href="/events/${this.event_id}/guests/${this.id}">Remove</a></li>
+        `)
+    }
+  }
 })

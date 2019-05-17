@@ -40,6 +40,9 @@
   <% end %>
   </table>
 
+  <h4>Budget Remaining: <%= number_to_currency(@difference) %></h4>
+  <br>
+
 <h4>Add an Expense</h4><br>
 <div class="col-md-4 mb-3">
   <%= form_for @expense, url: url_for(controller: 'expenses', action: 'create') do |f| %>
@@ -55,11 +58,10 @@
 </div>
   <br>
 
-<h4>Budget Remaining: <%= number_to_currency(@difference) %></h4>
-<br>
+
 
 <h2>Guest List</h2>
-<ol>
+<ol id="guest_list">
   <% @guests.each do |guest| %>
     <li><%= guest.name %> <%= link_to "Remove", event_guest_path(guest.event_id, guest.id), method: :delete %></li>
   <% end %>
